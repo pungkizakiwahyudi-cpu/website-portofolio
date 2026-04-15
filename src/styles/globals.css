@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  ::selection { background: rgba(0,166,251,0.35); color: #fff; }
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: #040b14; }
+  ::-webkit-scrollbar-thumb { background: #00a6fb; border-radius: 2px; }
+}
+
+@layer components {
+  .fi {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fi.in { opacity: 1; transform: translateY(0); }
+  .fi.d1 { transition-delay: 0.1s; }
+  .fi.d2 { transition-delay: 0.2s; }
+  .fi.d3 { transition-delay: 0.3s; }
+  .fi.d4 { transition-delay: 0.4s; }
+  .fi.d5 { transition-delay: 0.5s; }
+  .fi.d6 { transition-delay: 0.6s; }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #00a6fb, #00e5ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .glass-card {
+    background: rgba(7,17,32,0.85);
+    border: 1px solid rgba(0,166,251,0.15);
+    backdrop-filter: blur(10px);
+  }
+
+  .prog-bar {
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 1s ease 0.3s;
+  }
+  .prog-bar.go { transform: scaleX(1); }
+
+  @keyframes ring-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  .ring-spin { animation: ring-spin 6s linear infinite; }
+  .ring-spin-reverse { animation: ring-spin 10s linear infinite reverse; }
+  .ring-spin-slow { animation: ring-spin 20s linear infinite; }
+
+  @keyframes glow-pulse {
+    0%, 100% { opacity: 0.7; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.08); }
+  }
+  .glow-pulse { animation: glow-pulse 3s ease-in-out infinite; }
+
+  @keyframes float-up { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+  @keyframes float-down { 0%,100%{transform:translateY(0)} 50%{transform:translateY(8px)} }
+  .float-up { animation: float-up 4s ease-in-out infinite; }
+  .float-down { animation: float-down 5s ease-in-out infinite; }
+
+  @keyframes cursor-blink { 0%,100%{opacity:1} 50%{opacity:0} }
+  .cursor-blink { animation: cursor-blink 1s step-end infinite; }
+}
